@@ -30,4 +30,16 @@
   
   //总结：ts中变量一开始是什么类型，那么后期赋值的时候，只能用这个类型的数据，是不允许用其他类型的数据赋值给当前的这个变量
 
+  console.log('---------------------------');
+  
+  let und:undefined = undefined
+  let nll:null = null
+  console.log(und);
+  console.log(nll);
+  // undefined 和 null 都可以作为其他类型的子类型，把 undefined 和 null 赋值给其他类型的变量的，如:number 类型的变量
+  // let num2:number = undefined
+  let num2:number = null
+  console.log(num2);
+  
+
 })()
