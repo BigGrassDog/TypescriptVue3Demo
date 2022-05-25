@@ -69,10 +69,38 @@
   console.log(Color.red, Color.green, Color.blue);
   console.log(Color[3]);
   // 小例子，枚举中的元素可以是中文的数据值，但是不推荐
-  enum Gender {
-    女,
-    男
+  // enum Gender {
+  //   女,
+  //   男
+  // }
+  // console.log(Gender.男);
+
+  console.log('---------------------------');
+
+  // any类型
+  // let str: any = 100
+  // str = '广末凉子'
+  // console.log(str);
+
+  //当一个数组中要存储多个数据，个数不确定，类型不确定，此时也可以使用 any 类型来定义数组
+  let arr: any[] = [100, '中森明菜', true]
+  console.log(arr);
+  // 这种情况下也没有错误的提示信息，any类型有优点，也有缺点
+  // console.log(arr[0].split(''));
+
+  // void 类型,在函数声明的时候，小括号后面使用:void，代表的是该函数没有任何的返回值
+  function showMsg(): void {
+    console.log('坂井泉水');
+    // return
+    // return undefined
+    return null
   }
-  console.log(Gender.男);
+  console.log(showMsg());
+  // 定义void类型的变量，可以接收一个undifined的值，但是意义不是很大
+  let vd: void = undefined
+  console.log(vd);
+
+
+
 
 })()
