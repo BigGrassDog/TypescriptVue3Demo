@@ -100,7 +100,63 @@
   let vd: void = undefined
   console.log(vd);
 
+  console.log('-----------------------------');
 
+  // object 类型
+  // 定义一个函数，参数是 object 类型，返回值也是 object 类型
+  function getObj(obj: object): object {
+    console.log(obj);
+    return {
+      name: '藤原纪香',
+      age: 23
+    }
+  }
+  // console.log(getObj({name:'中森明菜',age:18}));
+  // console.log(getObj('123')); // 错误的
+  // console.log(getObj(new String('123')));
+  // console.log(getObj(String));
+  console.log(getObj(Number));
+
+  console.log('------------------------------');
+
+  // 联合类型（Union Types）表示取值可以为多种类型中的一种
+  // 需求1:定义一个函数的到一个数字或字符串形式值
+  // function getString(str: number | string): string {
+  //   return str.toString()
+  // }
+  // console.log(getString('123'));
+
+  // 需求2:定义一个函数，得到一个数字或字符串值的长度
+
+  // 类型断言：告诉编译器，我知道我自己是什么类型，也知道自己在干什么
+  // 类型断言的语法方式1:<类型>变量名
+  // 类型断言的语法方式2:值 as 类型
+  function getString(str: number | string): number {
+    // return str.toString().length
+
+    // if((<string>str).length){
+    //   return (<string>str).length
+    // }else{
+    //   return str.toString().length
+    // }
+
+    if ((str as string).length) {
+      return (str as string).length
+    } else {
+      return str.toString().length
+    }
+  }
+  console.log(getString('12345'));
+
+  // 类型推断
+  // let txt = 100
+  // txt = 1
+  // txt = '广末凉子'
+
+  let txt2 // any 类型
+  txt2 = 100
+  txt2 = '中森明菜'
+  console.log(txt2);
 
 
 })()
