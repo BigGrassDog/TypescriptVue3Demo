@@ -4,5 +4,6 @@
 // import './03_类类型.ts'
 // import './01_类.ts'
 // import './02_继承.ts'
-import './03_多态.ts'
+// import './03_多态.ts'
+import './04_修饰符.ts'
 document.write('广末凉子天下第一')
