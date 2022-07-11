@@ -8,5 +8,6 @@
 // import './04_修饰符.ts'
 // import './05_readonly修饰符.ts'
 // import './06_存取器.ts'
-import './07_静态成员.ts'
+// import './07_静态成员.ts'
+import './08_抽象类.ts'
 document.write('广末凉子天下第一')
