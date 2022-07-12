@@ -9,5 +9,10 @@
 // import './05_readonly修饰符.ts'
 // import './06_存取器.ts'
 // import './07_静态成员.ts'
-import './08_抽象类.ts'
+// import './08_抽象类.ts'
+
+// import './01_函数.ts'
+// import './02_可选参数和默认参数.ts'
+// import './03_剩余参数.ts'
+import './04_函数重载.ts'
 document.write('广末凉子天下第一')
