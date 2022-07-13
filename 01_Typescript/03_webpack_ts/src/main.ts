@@ -14,5 +14,7 @@
 // import './01_函数.ts'
 // import './02_可选参数和默认参数.ts'
 // import './03_剩余参数.ts'
-import './04_函数重载.ts'
+// import './04_函数重载.ts'
+
+import './01_泛型.ts'
 document.write('广末凉子天下第一')
