@@ -19,8 +19,8 @@
 
   console.log(add(1, 2));
 
-  console.log(add(1, '凉子'));
-  console.log(add('中森', 2));
+  // console.log(add(1, '凉子'));
+  // console.log(add('中森', 2));
 
 
 

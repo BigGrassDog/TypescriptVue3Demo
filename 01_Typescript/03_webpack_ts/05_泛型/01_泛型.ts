@@ -11,7 +11,7 @@
     return arr
   }
 
-  const arr1 = getArr(100.123,3)
+  const arr1 = getArr(100.123, 3)
   console.log(arr1);
 
   // 定义一个函数，同上，只不过传入的是字符串类型
@@ -23,7 +23,7 @@
     }
     return arr
   }
-  const arr2 = getArr2('abc',3)
+  const arr2 = getArr2('abc', 3)
   console.log(arr2);
 
   // 可以传入任意类型的数据，返回来的是存储这个任意类型数据的数组 
@@ -35,7 +35,21 @@
     }
     return arr
   }
-  const arr3 = getArr3([1,2,3],10)
+  const arr3 = getArr3([1, 2, 3], 10)
   console.log(arr3);
+
+  function getArr4<T>(data: T, count: number): T[] {
+    const arr: Array<T> = []
+    for (let i = 0; i < count; i++) {
+      arr.push(data)
+    }
+    return arr
+  }
+  const arr4 = getArr4<number>(124,5)
+  const arr5 = getArr4<string>('中森明菜',10)
+  console.log(arr4);
+  console.log(arr5);
   
+  
+
 })()

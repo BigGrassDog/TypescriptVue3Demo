@@ -16,5 +16,12 @@
 // import './03_剩余参数.ts'
 // import './04_函数重载.ts'
 
-import './01_泛型.ts'
+// import './01_泛型.ts'
+// import './02_多个泛型参数的函数.ts'
+// import './03_泛型接口.ts'
+// import './04_泛型类.ts'
+// import './05_泛型约束.ts'
+
+import './02_内置对象.ts'
+
 document.write('广末凉子天下第一')
