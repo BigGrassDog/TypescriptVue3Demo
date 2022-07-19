@@ -1,12 +1,12 @@
 <template>
-<h1>App父级组件</h1>
+<h2>Child子级组件</h2>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name:'App',
+  name:'ChildComponent',
   setup () {
     
 
@@ -16,5 +16,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>
