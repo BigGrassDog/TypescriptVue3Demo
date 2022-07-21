@@ -12,6 +12,7 @@ import ChildComponent from './components/ChildComponent.vue'
 export default defineComponent({
   name:'App',
   // 注册组件
+  
   components:{
     ChildComponent
   },
