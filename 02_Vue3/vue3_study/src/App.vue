@@ -1,11 +1,13 @@
 <template>
 <h1>App父级组件</h1>
+<h3>msg:{{msg}}</h3>
+<button @click="msg += '！'">更新数据</button>
 <hr />
-<child-component></child-component>
+<child-component :msg="msg"></child-component>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent,ref } from 'vue'
 
 // 引入子级组件Child
 import ChildComponent from './components/ChildComponent.vue'
@@ -17,7 +19,12 @@ export default defineComponent({
     ChildComponent
   },
   setup () {
-    return {}
+    // 定义一个 Ref 类型的数据
+    const msg = ref('中森明菜天下第一')
+
+    return {
+      msg
+    }
   }
 })
 </script>
