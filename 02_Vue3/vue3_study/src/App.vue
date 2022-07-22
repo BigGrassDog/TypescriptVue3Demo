@@ -3,7 +3,7 @@
 <h3>msg:{{msg}}</h3>
 <button @click="msg += '！'">更新数据</button>
 <hr />
-<child-component :msg="msg"></child-component>
+<child-component :msg="msg" :msg2="'真相'" @beautifulGirl="beautifulGirl"></child-component>
 </template>
 
 <script lang="ts">
@@ -21,9 +21,13 @@ export default defineComponent({
   setup () {
     // 定义一个 Ref 类型的数据
     const msg = ref('中森明菜天下第一')
+    function beautifulGirl(text:string){
+      msg.value += text
+    }
 
     return {
-      msg
+      msg,
+      beautifulGirl
     }
   }
 })
