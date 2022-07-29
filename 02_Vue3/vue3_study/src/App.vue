@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-  </div>
+<h2>readonly 和 shllowReadonly</h2>
 </template>
 
 <script lang="ts">
