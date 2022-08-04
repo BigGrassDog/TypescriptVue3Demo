@@ -40,6 +40,43 @@
     // delete proxyUser2.name
     // 拦截到了读和拦截到了删除
     // delete proxyUser2.car.color
+
+
+
+
+    // ==========================================
+
+
+
+    // 测试 shallowReadonly 和 readonly
+    const proxyUser3 = shallowReadonly({
+      name:'小明',
+      cars:['奔驰','宝马']
+    })
+    // 可以读取
+    // console.log(proxyUser3.name);
+    // 不能修改
+    // proxyUser3.name = '=='
+    // 不能删除
+    // delete proxyUser3.name
+    // 拦截到了读取，可以修改
+    // proxyUser3.cars[0] = '奥迪'
+    // 拦截到了读取，可以删除
+    // delete proxyUser3.cars[0]
+
+    const proxyUser4 = readonly({
+      name:'小明',
+      cars:['奔驰','宝马']
+    })
+    // 拦截到了读取
+    // console.log(proxyUser4.name);
+    // console.log(proxyUser4.cars[0]);
+    // 只读的
+    // proxyUser4.name = '哈哈'
+    // 只读的
+    // proxyUser4.cars[0] = '哈哈'
+    // delete proxyUser4.name
+    // delete proxyUser4.cars[0]
   </script>
 </body>
 </html>
