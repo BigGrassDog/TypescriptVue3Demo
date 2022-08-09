@@ -103,6 +103,12 @@
     // ref2.value = '=='  
     // 劫持到
     // ref2.value.car = '=='
+
+
+    console.log(isRef(ref({})))
+    console.log(isReactive(reactive({})))
+    console.log(isReadonly(readonly({})))
+    console.log(isProxy(readonly({})))
   </script>
 </body>
 </html>
