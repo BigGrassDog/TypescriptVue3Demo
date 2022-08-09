@@ -77,6 +77,32 @@
     // proxyUser4.cars[0] = '哈哈'
     // delete proxyUser4.name
     // delete proxyUser4.cars[0]
+
+
+
+    const ref1 = shallowRef({
+      name:'小明',
+      cars:{
+        color:'red'
+      }
+    })
+    // console.log(ref1.value);
+    // 劫持到
+    // ref1.value = '=='
+    // 劫持不到
+    // ref1.value.car = '=='
+
+    const ref2 = ref({
+      name:'小明',
+      cars:{
+        color:'red'
+      }
+    }) 
+    // console.log(ref2.value); 
+    // 劫持到
+    // ref2.value = '=='  
+    // 劫持到
+    // ref2.value.car = '=='
   </script>
 </body>
 </html>
