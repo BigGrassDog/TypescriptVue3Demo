@@ -1,16 +1,16 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
-  <li>
+  <li :class="{'active':isActive}" @mouseenter="mouseHandler(true)" @mouseleave="mouseHandler(false)">
     <label for="">
       <input type="checkbox" v-model="todo.isCompleted" />
       <span>{{todo.title}}</span>
-      <button class="btn btn-danger" style="display:none">删除</button>
+      <button v-show="isActive" class="btn btn-danger">删除</button>
     </label>
   </li>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent,ref } from 'vue'
 
 // 引入接口
 import {Todo} from '../types/todo'
@@ -22,15 +22,22 @@ export default defineComponent({
     todo:Object as ()=> Todo // 函数返回的是Todo 类型
   },
   setup () {
-    
+    let isActive = ref(false)
+    // 鼠标进入和离开事件的回调函数
+    const mouseHandler = (flag:boolean)=>{
+      isActive.value = flag
+    }
 
-    return {}
+    return {
+      mouseHandler,
+      isActive
+    }
   }
 })
 </script>
 
 <style scoped>
-li label li input {
+li label, li input {
   vertical-align: middle;
   margin-right: 6px;
   position: relative;
@@ -39,8 +46,13 @@ li label li input {
 
 li button {
   float: right;
-  display: none;
   margin-top: 3px;
+}
+
+li.active {
+  color: #ff6028;
+  background: #f7f7f7;
+  cursor: pointer;
 }
 
 li:before {
