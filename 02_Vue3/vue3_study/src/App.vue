@@ -47,8 +47,8 @@ export default defineComponent({
     // 删除数据的方法
     const deleteTodo = (index:number)=>{
       console.log(index);
-      state.todos = state.todos.filter((value,key)=>{
-        return index !== key
+      state.todos = state.todos.filter(item=>{
+        return index !== item.id
       })
     }
 

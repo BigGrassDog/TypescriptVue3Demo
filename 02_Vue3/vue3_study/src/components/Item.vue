@@ -4,7 +4,7 @@
     <label for="">
       <input type="checkbox" v-model="todo.isCompleted" />
       <span>{{todo.title}}</span>
-      <button v-show="isActive" class="btn btn-danger">删除</button>
+      <button v-show="isActive" class="btn btn-danger" @click="delT(todo.id)">删除</button>
     </label>
   </li>
 </template>
@@ -19,25 +19,38 @@ export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name:'Item',
   props:{
-    todo:Object as ()=> Todo // 函数返回的是Todo 类型
+    todo:{
+      type:Object as ()=> Todo,
+      required:true
+    }, // 函数返回的是Todo 类型
+    deleteTodo:{
+      type:Function,
+      required:true
+    }
   },
-  setup () {
+  setup (props) {
     let isActive = ref(false)
     // 鼠标进入和离开事件的回调函数
     const mouseHandler = (flag:boolean)=>{
       isActive.value = flag
     }
 
+    const delT = (index:number)=>{
+      props.deleteTodo(index)
+    }
+
     return {
       mouseHandler,
-      isActive
+      isActive,
+      delT
     }
   }
 })
 </script>
 
 <style scoped>
-li label, li input {
+li label,
+li input {
   vertical-align: middle;
   margin-right: 6px;
   position: relative;

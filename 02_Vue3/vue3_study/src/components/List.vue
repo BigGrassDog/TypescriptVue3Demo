@@ -1,6 +1,6 @@
 <template>
 <ul class="todo-main">
-<Item v-for="(item,index) in todos" :key="index" :todo="item" @click="deleteT(index)"></Item>
+<Item v-for="(item,index) in todos" :key="index" :todo="item" :deleteTodo="deleteTodo"></Item>
 </ul>
 </template>
 
@@ -14,26 +14,12 @@ export default defineComponent({
   components:{
     Item
   },
-  props:{
-    todos:{
-      type:Array,
-      default:()=>{
-        return []
-      }
-    },
-    deleteTodo:{
-      type:Function,
-      required:true
-    }
-  },
-  setup (props) {
-    const deleteT = (index:number)=>{
-      props.deleteTodo(index)
-    }
+  props:['todos','deleteTodo'],
+  setup () {
     
 
     return {
-      deleteT
+
     }
   }
 })
