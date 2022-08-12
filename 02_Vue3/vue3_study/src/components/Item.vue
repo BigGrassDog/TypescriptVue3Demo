@@ -2,7 +2,7 @@
 <template>
   <li :class="{'active':isActive}" @mouseenter="mouseHandler(true)" @mouseleave="mouseHandler(false)">
     <label for="">
-      <input type="checkbox" v-model="todo.isCompleted" />
+      <input type="checkbox" v-model="isComplete" />
       <span>{{todo.title}}</span>
       <button v-show="isActive" class="btn btn-danger" @click="delT(todo.id)">删除</button>
     </label>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,ref } from 'vue'
+import { defineComponent,ref,computed } from 'vue'
 
 // 引入接口
 import {Todo} from '../types/todo'
@@ -26,6 +26,10 @@ export default defineComponent({
     deleteTodo:{
       type:Function,
       required:true
+    },
+    updateTodo:{
+      type:Function,
+      required:true
     }
   },
   setup (props) {
@@ -35,14 +39,27 @@ export default defineComponent({
       isActive.value = flag
     }
 
+    // 删除数据的方法
     const delT = (index:number)=>{
       props.deleteTodo(index)
     }
 
+    // 计算属性方式-----来让当前复选框选中/不选中
+    const isComplete = computed({
+      get(){
+        return props.todo.isCompleted
+      },
+      set(val){
+        props.updateTodo(props.todo,val)
+      }
+    })
+
+
     return {
       mouseHandler,
       isActive,
-      delT
+      delT,
+      isComplete
     }
   }
 })
