@@ -3,7 +3,7 @@
   <div class="todo-wrap">
     <Header :addTodo="addTodo"></Header>
     <List :todos="todos" :deleteTodo="deleteTodo" :updateTodo="updateTodo"></List>
-    <Footer></Footer>
+    <Footer :todos="todos" :checkAll="checkAll"></Footer>
   </div>
 </div>
 </template>
@@ -55,15 +55,22 @@ export default defineComponent({
     // 修改 todo 的 isCompleted 属性的状态
     const updateTodo = (todo:Todo,isCompleted:boolean)=>{
       todo.isCompleted = isCompleted
-      console.log(todo);
-      
+      console.log(todo);      
+    }
+
+    // 全选 / 取消全选
+    const checkAll = (isCompleted:boolean) => {
+      state.todos.forEach(todo=>{
+        todo.isCompleted = isCompleted
+      })
     }
 
     return {
       ...toRefs(state),
       addTodo,
       deleteTodo,
-      updateTodo
+      updateTodo,
+      checkAll
     }
   }
 })
