@@ -9,13 +9,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,reactive,toRefs } from 'vue'
+import { defineComponent,onMounted,reactive,toRefs,watch } from 'vue'
 import Header from './components/Header.vue'
 import List from './components/List.vue'
 import Footer from './components/Footer.vue'
 
 // 引入接口
 import {Todo} from './types/todo'
+import {saveTodos,readTodos} from './utils/localStorageUtils'
 
 export default defineComponent({
   name:'App',
@@ -28,13 +29,23 @@ export default defineComponent({
   // 把数组暂且定义在 App.vue 父级组件
   setup () {
     // 定义一个数组数据
+    // const state = reactive<{todos:Todo[]}>({
+    //   todos:[
+    //     {id:1,title:'Benz',isCompleted:false},
+    //     {id:2,title:'Audi',isCompleted:false},
+    //     {id:3,title:'Bmw',isCompleted:false},
+    //     {id:4,title:'Porche',isCompleted:true},
+    //   ]
+    // })
+
     const state = reactive<{todos:Todo[]}>({
-      todos:[
-        {id:1,title:'Benz',isCompleted:false},
-        {id:2,title:'Audi',isCompleted:false},
-        {id:3,title:'Bmw',isCompleted:false},
-        {id:4,title:'Porche',isCompleted:true},
-      ]
+      todos:[]
+    })
+    // 界面加载完毕后过了一会再读区数据
+    onMounted(()=>{
+      setTimeout(()=>{
+        state.todos = readTodos()
+      },500)
     })
 
     // 添加数据的方法
@@ -71,6 +82,18 @@ export default defineComponent({
         return !todo.isCompleted
       })
     }
+
+    // 监视操作：如果 todos 数组的数据变化了，直接存储到浏览器的缓存中
+    // watch(()=>state.todos,(val)=>{
+    //   localStorage.setItem('todos_key',JSON.stringify(val))
+    // },{deep:true})
+
+    // watch(()=>state.todos,(val)=>{
+    //   // 保存到浏览器的缓存中
+    //   saveTodos(val)
+    // },{deep:true})
+
+    watch(()=>state.todos,saveTodos,{deep:true})
 
     return {
       ...toRefs(state),
